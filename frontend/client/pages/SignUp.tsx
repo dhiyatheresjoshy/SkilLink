@@ -6,6 +6,7 @@ import { Label } from '../components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Textarea } from '../components/ui/textarea';
 import { Zap, User, Brain, Target } from 'lucide-react';
+import api from '@/api';
 export default function SignUp() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ export default function SignUp() {
   }
 
   try {
-    const response = await fetch('http://localhost:5000/api/signup', {
+      const response = await fetch(`https://skillink-6mvm.onrender.com/api/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

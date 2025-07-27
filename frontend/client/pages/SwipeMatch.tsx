@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { X, Heart, ArrowLeft, MapPin, GraduationCap, Clock, Zap, Target, Brain, Sparkles } from 'lucide-react';
-
+import api from '@/api';
 interface SkillProfile {
   uid: number;
   name: string;
@@ -34,7 +34,7 @@ export default function SwipeMatch() {
       const uid = localStorage.getItem("uid");
       if (!uid) throw new Error("UID not found in localStorage");
 
-      const res = await fetch(`http://localhost:5000/api/match/${uid}`);
+      const res = await fetch(`https://skillink-6mvm.onrender.com/api/match/${uid}`);
       if (!res.ok) throw new Error("Failed to fetch matches");
 
       const data = await res.json();
@@ -59,7 +59,7 @@ export default function SwipeMatch() {
   if (!currentProfile) return;
 
   try {
-const res = await fetch("http://localhost:5000/api/swipe", {
+const res = await fetch("https://skillink-6mvm.onrender.com/api/swipe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Users, MessageCircle, Trophy, Settings, Search, Bell, Zap, Target, Brain, Rocket } from 'lucide-react';
-
+import api from '@/api';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -23,9 +23,8 @@ export default function Dashboard() {
 
     const fetchUser = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/user/${uid}`);
-        if (!res.ok) throw new Error('User not found');
-        const currentUser = await res.json();
+        const res = await api.get(`http://localhost:5000/api/user/${uid}`);
+        const currentUser = await res.data;
 
         setUser({
           name: `${currentUser.firstName} ${currentUser.lastName}`,

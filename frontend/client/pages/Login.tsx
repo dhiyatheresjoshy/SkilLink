@@ -4,7 +4,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import { Zap, LogIn } from 'lucide-react';
-
+import api from '@/api';
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -14,7 +14,7 @@ export default function Login() {
   e.preventDefault();
 
   try {
-    const response = await fetch('http://127.0.0.1:5000/api/login', {
+    const response = await fetch('https://skillink-6mvm.onrender.com/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
